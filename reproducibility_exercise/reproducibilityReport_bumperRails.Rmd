@@ -142,74 +142,72 @@ etaSquared(st.george.aov)
 
 #### Spadina
 
-# STEP 1: filter the data to get only St. George estimates
 spadina = d %>%
   filter(STN_NAME == 'SPAD')
 
-# STEP 2: was the estimated distance to St. George greater for eastbound or westbound travellers?
-# no stats needed, just get the mean estimated distance between east and west directions
-# Hint: you'll want group_by() and summarize()
 spadina %>% 
   group_by(DIRECTION)%>%
   summarize(
     mean = mean(DISTANCE)
             )
 
-# STEP 3: Now run an aov on St. George data with distance as the response variable and direction as the explanatory variable\
 spadina.aov = aov(data = spadina, formula = DISTANCE ~ DIRECTION)
 summary(spadina.aov)
 
-# STEP 4: Find the eta squared
 etaSquared(spadina.aov)
 ```
 
-```
+#### BloorYonge
 
-#### Bloor-Yonge
-```{r bloor-yonge}
-## do the same for Bloor-Yonge
-### Station-specific analyses
+```{r blooryonge}
+## do the same for BloorYonge
 
-# STEP 1: filter the data to get only St. George estimates
 bloor = d %>%
   filter(STN_NAME == 'B-Y')
 
-# STEP 2: was the estimated distance to St. George greater for eastbound or westbound travellers?
-# no stats needed, just get the mean estimated distance between east and west directions
-# Hint: you'll want group_by() and summarize()
 bloor %>% 
   group_by(DIRECTION)%>%
   summarize(
     mean = mean(DISTANCE)
             )
 
-# STEP 3: Now run an aov on St. George data with distance as the response variable and direction as the explanatory variable\
 bloor.aov = aov(data = bloor, formula = DISTANCE ~ DIRECTION)
 summary(bloor.aov)
 
-# STEP 4: Find the eta squared
 etaSquared(bloor.aov)
-```
 ```
 
 #### Sherbourne
 ```{r sherbourne}
 ## do the same for Sherbourne
+sher = d %>%
+  filter(STN_NAME == 'SHER')
+
+sher %>% 
+  group_by(DIRECTION)%>%
+  summarize(
+    mean = mean(DISTANCE)
+            )
+
+sher.aov = aov(data = sher, formula = DISTANCE ~ DIRECTION)
+summary(sher.aov)
+
+etaSquared(sher.aov)
 ```
 
 # Step 5: Reflection
 
 Were you able to reproduce the results you attempted to reproduce? If not, what part(s) were you unable to reproduce?
 
-> ANSWER HERE
+> Yes, I was able to reproduce the results I attempted to!
 
 How difficult was it to reproduce your results? 
 
-> ANSWER HERE
+> For me, as someone who has very minimal exposure and experience with R, it was about a medium difficulty. 
 
 What aspects made it difficult? What aspects made it easy?
 
-> ANSWER HERE
+> The most difficult part for me was looking up how certain functions worked; for example, understanding the format of the arguments that a certain function would take. However, using R Studios built-in Help function and looking up official documentation for the functions helped a lot. Also, the way this assignment was scaffolded, with the "FIXME" parts, made it easier for me to understand the logic and infer what information I needed to fill in.
 
 
 # Bonus: Reproduce Fig 1
